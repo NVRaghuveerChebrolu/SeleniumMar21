@@ -31,6 +31,6 @@ public class alerts {
 		Alert alert = driver.switchTo().alert();
 		System.out.println(alert.getText());
 		alert.accept();
-		
+
 	}
 }
