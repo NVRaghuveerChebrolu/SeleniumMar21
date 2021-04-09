@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+  <test name="Test">
+    <classes>
+      <class name="com.testcases.TestNgClass1"/>
+      <Methods>
+      <include name ="Aestcase2"></include>
+      <include name ="Aestcase2"></include>
+      <include name ="Aestcase2"></include>
+      <include name ="Aestcase2"></include>
+      <include name ="Aestcase2"></include>
+      <include name ="Aestcase2"></include>
+      </Methods>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
