@@ -3,19 +3,27 @@ package com.SeleniumConcepts;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class fileupload {
 
-	public static void main(String[] args) throws AWTException {
+	public static void main(String[] args) throws AWTException, InterruptedException {
 		// TODO Auto-generated method stub
 		WebDriver driver = null;
 		WebDriverManager.chromedriver().setup();
@@ -24,13 +32,14 @@ public class fileupload {
 		driver.manage().window().maximize();
 		// implicit wait
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
 		// open upload window
-		driver.findElement(By.xpath("//span[contains(text(),'Browse …')]")).click();
+		WebElement ele = driver.findElement(By.xpath("//input[@id='input-4']"));
+		// JavascriptExecutor js = (JavascriptExecutor) driver;
+		// js.executeScript("arguments[0].scrollIntoView()", ele);
+		Actions obj = new Actions(driver);
+		obj.click(ele).build().perform();
 
-		// put path to your image in a clipboard
-		StringSelection ss = new StringSelection("C://Users//raghu//Desktop//Desktop//upload file.pptx");
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		setClipboardContents("C:\\Users\\raghu\\OneDrive\\Desktop\\sample.jpg");
 
 		// imitate mouse events like ENTER, CTRL+C, CTRL+V
 		Robot robot = new Robot();
@@ -44,6 +53,20 @@ public class fileupload {
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.delay(90);
 		robot.keyRelease(KeyEvent.VK_ENTER);
+
+	}
+
+	private static void setClipboardContents(String string) {
+		StringSelection stringSelection = new StringSelection(string);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(stringSelection, null);
+		try {
+			Transferable t = clipboard.getContents(null);
+			if (t.isDataFlavorSupported(DataFlavor.stringFlavor))
+				System.out.println(t.getTransferData(DataFlavor.stringFlavor));
+		} catch (UnsupportedFlavorException | IOException ex) {
+			System.out.println("");
+		}
 
 	}
 
