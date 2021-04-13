@@ -46,12 +46,16 @@ public class fileupload {
 		robot.delay(250);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(2000);
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_V);
+		Thread.sleep(2000);
 		robot.keyRelease(KeyEvent.VK_V);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);
 		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.delay(90);
+		Thread.sleep(2000);
+		//robot.delay(90);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
 	}
@@ -64,8 +68,8 @@ public class fileupload {
 			Transferable t = clipboard.getContents(null);
 			if (t.isDataFlavorSupported(DataFlavor.stringFlavor))
 				System.out.println(t.getTransferData(DataFlavor.stringFlavor));
-		} catch (UnsupportedFlavorException | IOException ex) {
-			System.out.println("");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
