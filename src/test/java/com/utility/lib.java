@@ -45,14 +45,12 @@ public class lib {
 		ExtentReport.setSystemInfo("Browser", "Chrome");
 	}
 
-	public static void ReadPropertiesFile() throws Exception {
+	public static void readPropertiesFile() throws Exception {
 		FileInputStream File = new FileInputStream(
 				new File(System.getProperty("user.dir") + "//src//test//resources//config.properties"));
 		property.load(File);
 		property.getProperty("GmoOnlineURL");
-		System.out.println(property.getProperty("url"));
-		System.out.println(property.getProperty("username"));
-		System.out.println(property.getProperty("password"));
+		System.out.println(property.getProperty("GmoOnlineURL"));
 		System.out.println(property.getProperty("browser"));
 	}
 

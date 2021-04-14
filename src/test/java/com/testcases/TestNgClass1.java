@@ -44,11 +44,14 @@ import com.utility.lib;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestNgClass1 extends lib {
-	WebDriver driver;
+	//WebDriver driver;
 	HashMap<String, String> hm = new HashMap<String, String>();
 
 	@Test(priority = 0)
 	public void validateGmoOnlineLoadedSuccessfully() {
+		String TestCaseName=new Object(){}.getClass().getEnclosingMethod().getName();
+		System.out.println("InsideTestCase : "+TestCaseName);
+		System.out.println();
 		Extenttest = ExtentReport.createTest("validateGmoOnlineLoadedSuccessfully");
 		System.out.println("inside Testcase1");
 		String actualheader = driver.findElement(By.xpath("//font[contains(text(),'GMO OnLine')]")).getText();
@@ -64,7 +67,7 @@ public class TestNgClass1 extends lib {
 		driver.findElement(By.xpath("//input[@type='button' and @value='Enter GMO OnLine']")).click();
 		String actualtile = driver.getTitle();
 		System.out.println(actualtile);
-		String expectedtitle = "OnLine Catalog";
+		String expectedtitle = "OnLine Cataloge";
 		Assert.assertEquals(actualtile, expectedtitle);
 	}
 
@@ -199,7 +202,9 @@ public class TestNgClass1 extends lib {
 	@BeforeClass
 	public void beforeClass() {
 		System.out.println("inside beforeClass");
-		lib.startBrowser(property.getProperty("browser"),property.getProperty("Application") );
+		System.out.println("browser : "+property.getProperty("browser"));
+		System.out.println("Application : "+property.getProperty("ApplicationGMO_Online"));
+		lib.startBrowser(property.getProperty("browser"),property.getProperty("ApplicationGMO_Online") );
 	
 	}
 
@@ -211,8 +216,8 @@ public class TestNgClass1 extends lib {
 	@BeforeTest
 	public void beforeTest() {
 		System.out.println("inside beforeTest");
-		/*TestNgClass1 obj = new TestNgClass1();
-		obj.startReport();*/
+		TestNgClass1 obj = new TestNgClass1();
+		obj.startReport();
 		lib.startReport();
 
 	}
@@ -226,7 +231,7 @@ public class TestNgClass1 extends lib {
 	@BeforeSuite
 	public void beforeSuite() throws FileNotFoundException, Exception {
 		System.out.println("inside beforeSuite");
-		lib.ReadPropertiesFile();
+		lib.readPropertiesFile();
 
 	}
 

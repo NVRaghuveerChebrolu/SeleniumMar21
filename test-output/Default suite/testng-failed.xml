@@ -5,7 +5,6 @@
     <classes>
       <class name="com.testcases.TestNgClass1">
         <methods>
-          <include name="ValidatingBillingInfoWithDataDriven"/>
           <include name="validateOnLineCatalogLoadedSuccessfully"/>
           <include name="beforeTest"/>
           <include name="validateOrderQuantityGlacierSunGlasses"/>
