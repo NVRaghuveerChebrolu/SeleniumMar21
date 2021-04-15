@@ -31,6 +31,9 @@ public class lib {
 	public static Properties property = new Properties();
 	public static WebDriver driver;
 
+	static {
+		System.out.println("Execute before main");
+	}
 	public static void startReport() {
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "//test-output//ExtentReport.html");
 		htmlReporter.config().setDocumentTitle("Automation Report-ExtentReport");
