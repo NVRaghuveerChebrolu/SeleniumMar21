@@ -31,15 +31,15 @@ public class webtable {
 		String positionpassed = "Pre-Sales Support";
 		// String salaryofpositionpassed = getSalaryBasedonPosition(driver,
 		// positionpassed);
-		//getSalaryBasedonPosition(driver, positionpassed);
+		// getSalaryBasedonPosition(driver, positionpassed);
 		// System.out.println(salaryofpositionpassed);
 
 		List<WebElement> AllNames = driver.findElements(By.xpath("//table/tbody/tr/td[3]"));
 		int length = AllNames.size();
 		for (int i = 1; i <= length; i++) {
-			String lastName = driver.findElement(By.xpath("//table/tbody/tr["+i+"]/td[3]")).getText();
-			System.out.println("i value: "+i);
-			System.out.println("lastName: "+lastName);
+			String lastName = driver.findElement(By.xpath("//table/tbody/tr[" + i + "]/td[3]")).getText();
+			System.out.println("i value: " + i);
+			System.out.println("lastName: " + lastName);
 			if (lastName.equals("Nash")) {
 				String salary = driver.findElement(By.xpath("//table/tbody/tr[" + i + "]/td[7]")).getText();
 				System.out.println(salary);
