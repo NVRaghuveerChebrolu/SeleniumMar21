@@ -2,32 +2,32 @@
 <testng-results skipped="0" failed="2" ignored="0" total="4" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="17221" started-at="2021-04-14T11:06:31Z" finished-at="2021-04-14T11:06:48Z">
+  <suite name="Default suite" duration-ms="34664" started-at="2021-04-20T05:35:35Z" finished-at="2021-04-20T05:36:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="17221" started-at="2021-04-14T11:06:31Z" finished-at="2021-04-14T11:06:48Z">
+    <test name="Default test" duration-ms="34664" started-at="2021-04-20T05:35:35Z" finished-at="2021-04-20T05:36:10Z">
       <class name="com.testcases.TestNgClass1">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeSuite" is-config="true" duration-ms="14" started-at="2021-04-14T11:06:31Z" finished-at="2021-04-14T11:06:31Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeSuite" is-config="true" duration-ms="34" started-at="2021-04-20T05:35:35Z" finished-at="2021-04-20T05:35:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeTest" is-config="true" duration-ms="188" started-at="2021-04-14T11:06:31Z" finished-at="2021-04-14T11:06:31Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeTest" is-config="true" duration-ms="207" started-at="2021-04-20T05:35:35Z" finished-at="2021-04-20T05:35:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeClass" is-config="true" duration-ms="6176" started-at="2021-04-14T11:06:31Z" finished-at="2021-04-14T11:06:37Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeClass" is-config="true" duration-ms="6600" started-at="2021-04-20T05:35:35Z" finished-at="2021-04-20T05:35:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-04-14T11:06:37Z" finished-at="2021-04-14T11:06:37Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-04-20T05:35:42Z" finished-at="2021-04-20T05:35:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateGmoOnlineLoadedSuccessfully()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="validateGmoOnlineLoadedSuccessfully" duration-ms="96" started-at="2021-04-14T11:06:37Z" finished-at="2021-04-14T11:06:38Z">
+        <test-method status="PASS" signature="validateGmoOnlineLoadedSuccessfully()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="validateGmoOnlineLoadedSuccessfully" duration-ms="183" started-at="2021-04-20T05:35:42Z" finished-at="2021-04-20T05:35:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateGmoOnlineLoadedSuccessfully -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="11" started-at="2021-04-14T11:06:38Z" finished-at="2021-04-14T11:06:38Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="36" started-at="2021-04-20T05:35:42Z" finished-at="2021-04-20T05:35:42Z">
           <params>
             <param index="0">
               <value>
@@ -38,11 +38,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-04-14T11:06:38Z" finished-at="2021-04-14T11:06:38Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-04-20T05:35:42Z" finished-at="2021-04-20T05:35:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="validateOnLineCatalogLoadedSuccessfully()[pri:1, instance:com.testcases.TestNgClass1@887af79]" name="validateOnLineCatalogLoadedSuccessfully" duration-ms="748" started-at="2021-04-14T11:06:38Z" depends-on-methods="com.testcases.TestNgClass1.validateGmoOnlineLoadedSuccessfully" finished-at="2021-04-14T11:06:38Z">
+        <test-method status="FAIL" signature="validateOnLineCatalogLoadedSuccessfully()[pri:1, instance:com.testcases.TestNgClass1@887af79]" name="validateOnLineCatalogLoadedSuccessfully" duration-ms="1877" started-at="2021-04-20T05:35:42Z" depends-on-methods="com.testcases.TestNgClass1.validateGmoOnlineLoadedSuccessfully" finished-at="2021-04-20T05:35:44Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [OnLine Cataloge] but found [OnLine Catalog]]]>
@@ -87,7 +87,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateOnLineCatalogLoadedSuccessfully -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="1012" started-at="2021-04-14T11:06:38Z" finished-at="2021-04-14T11:06:39Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="2108" started-at="2021-04-20T05:35:44Z" finished-at="2021-04-20T05:35:46Z">
           <params>
             <param index="0">
               <value>
@@ -98,11 +98,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-04-14T11:06:39Z" finished-at="2021-04-14T11:06:39Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-04-20T05:35:46Z" finished-at="2021-04-20T05:35:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="validateOrderQuantityGlacierSunGlasses()[pri:2, instance:com.testcases.TestNgClass1@887af79]" name="validateOrderQuantityGlacierSunGlasses" duration-ms="2137" started-at="2021-04-14T11:06:39Z" finished-at="2021-04-14T11:06:41Z">
+        <test-method status="FAIL" signature="validateOrderQuantityGlacierSunGlasses()[pri:2, instance:com.testcases.TestNgClass1@887af79]" name="validateOrderQuantityGlacierSunGlasses" duration-ms="4500" started-at="2021-04-20T05:35:46Z" finished-at="2021-04-20T05:35:51Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [Billing Informatio] but found [Billing Information]]]>
@@ -147,7 +147,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateOrderQuantityGlacierSunGlasses -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="1064" started-at="2021-04-14T11:06:41Z" finished-at="2021-04-14T11:06:43Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="721" started-at="2021-04-20T05:35:51Z" finished-at="2021-04-20T05:35:52Z">
           <params>
             <param index="0">
               <value>
@@ -158,15 +158,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-04-14T11:06:43Z" finished-at="2021-04-14T11:06:43Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-04-20T05:35:52Z" finished-at="2021-04-20T05:35:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="ValidatingBillingInfoWithDataDriven()[pri:3, instance:com.testcases.TestNgClass1@887af79]" name="ValidatingBillingInfoWithDataDriven" duration-ms="5322" started-at="2021-04-14T11:06:43Z" finished-at="2021-04-14T11:06:48Z">
+        <test-method status="PASS" signature="ValidatingBillingInfoWithDataDriven()[pri:3, instance:com.testcases.TestNgClass1@887af79]" name="ValidatingBillingInfoWithDataDriven" duration-ms="17935" started-at="2021-04-20T05:35:52Z" finished-at="2021-04-20T05:36:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ValidatingBillingInfoWithDataDriven -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="11" started-at="2021-04-14T11:06:48Z" finished-at="2021-04-14T11:06:48Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-04-20T05:36:10Z" finished-at="2021-04-20T05:36:10Z">
           <params>
             <param index="0">
               <value>
@@ -177,15 +177,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterTest" is-config="true" duration-ms="413" started-at="2021-04-14T11:06:48Z" finished-at="2021-04-14T11:06:48Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterClass" is-config="true" duration-ms="0" started-at="2021-04-14T11:06:48Z" finished-at="2021-04-14T11:06:48Z">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterClass" is-config="true" duration-ms="0" started-at="2021-04-20T05:36:10Z" finished-at="2021-04-20T05:36:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterSuite" is-config="true" duration-ms="0" started-at="2021-04-14T11:06:48Z" finished-at="2021-04-14T11:06:48Z">
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterTest" is-config="true" duration-ms="368" started-at="2021-04-20T05:36:10Z" finished-at="2021-04-20T05:36:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.testcases.TestNgClass1@887af79]" name="afterSuite" is-config="true" duration-ms="0" started-at="2021-04-20T05:36:10Z" finished-at="2021-04-20T05:36:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
