@@ -1,7 +1,7 @@
 package com.Java.Programs;
 
 public class stringsBasics {
-
+	//check edit form git hub
 	public static void main(String[] args) {
 		// declaring using string literal
 		String s = "LearingJava";
