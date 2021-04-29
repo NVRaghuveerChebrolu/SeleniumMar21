@@ -3,6 +3,7 @@ package com.testcases;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.maven.surefire.shade.org.apache.maven.shared.utils.io.FileUtils;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -41,22 +43,24 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.utility.lib;
 import com.utility.objectRepository;
-
+import com.utility.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestNgClass3 extends lib {
-	//WebDriver driver;
+	// WebDriver driver;
 	HashMap<String, String> hm = new HashMap<String, String>();
 
 	@Test(priority = 0)
 	public void validateGmoOnlineLoadedSuccessfully() {
-		String TestCaseName=new Object(){}.getClass().getEnclosingMethod().getName();
-		System.out.println("InsideTestCase : "+TestCaseName);
+		String TestCaseName = new Object() {
+		}.getClass().getEnclosingMethod().getName();
+		System.out.println("InsideTestCase : " + TestCaseName);
 		System.out.println();
 		Extenttest = ExtentReport.createTest("validateGmoOnlineLoadedSuccessfully");
 		System.out.println("inside Testcase1");
-		//String actualheader = driver.findElement(By.xpath(objectRepository.actualheader)).getText();
-		String actualheader=lib.findElement(driver, objectRepository.actualheader).getText();
+		// String actualheader =
+		// driver.findElement(By.xpath(objectRepository.actualheader)).getText();
+		String actualheader = lib.findElement(driver, objectRepository.actualheader).getText();
 		System.out.println("actualheader : " + actualheader);
 		String expectedHeader = "GMO OnLine";
 		Assert.assertEquals(actualheader, expectedHeader);
@@ -66,7 +70,7 @@ public class TestNgClass3 extends lib {
 	public void validateOnLineCatalogLoadedSuccessfully() {
 		Extenttest = ExtentReport.createTest("validateOnLineCatalogLoadedSuccessfully");
 		System.out.println("inside Testcase2");
-		//driver.findElement(By.xpath(objectRepository.EnterGmoOnline)).click();
+		// driver.findElement(By.xpath(objectRepository.EnterGmoOnline)).click();
 		lib.findElement(driver, objectRepository.EnterGmoOnline).click();
 		String actualtile = driver.getTitle();
 		System.out.println(actualtile);
@@ -79,30 +83,32 @@ public class TestNgClass3 extends lib {
 		System.out.println("inside Testcase3");
 		SoftAssert softAssert = new SoftAssert();
 		Extenttest = ExtentReport.createTest("validateOrderQuantityGlacierSunGlasses");
-		//driver.findElement(By.xpath(objectRepository.QTY_GLASSES)).sendKeys("3");
-		//driver.findElement(By.xpath(objectRepository.orderQuantitySubmitButton)).click();
-		lib.findElement(driver, objectRepository.QTY_GLASSES).sendKeys("3");
+		// driver.findElement(By.xpath(objectRepository.QTY_GLASSES)).sendKeys("3");
+		// driver.findElement(By.xpath(objectRepository.orderQuantitySubmitButton)).click();
+		lib.findElement(driver, objectRepository.QTY_GLASSES).sendKeys(Constants.orderQnty);
 		lib.findElement(driver, objectRepository.orderQuantitySubmitButton).click();
-		int quantity = 3;
+		int quantity = Integer.parseInt(Constants.orderQnty);
 		String Acutaltitle = driver.getTitle();
 		String Expectedtitle = "Place Order";
 		Assert.assertEquals(Acutaltitle, Expectedtitle);
-		//String Unitprice = driver.findElement(By.xpath(objectRepository.orderQuantityUnitPrice)).getText();
+		// String Unitprice =
+		// driver.findElement(By.xpath(objectRepository.orderQuantityUnitPrice)).getText();
 		String Unitprice = lib.findElement(driver, objectRepository.orderQuantityUnitPrice).getText();
 		System.out.println("Unitprice : " + Unitprice);
-		String Price = Unitprice.substring(2);
+		String Price = Unitprice.substring(Integer.parseInt(Constants.orderQnty));
 		System.out.println(Price);
-		//String Totalprice = driver.findElement(By.xpath(objectRepository.orderQuantityTotalPrice)).getText();
+		// String Totalprice =
+		// driver.findElement(By.xpath(objectRepository.orderQuantityTotalPrice)).getText();
 		String Totalprice = lib.findElement(driver, objectRepository.orderQuantityTotalPrice).getText();
 		float priceofSigleUnit = Float.parseFloat(Price);
 		float ActualPrice = quantity * priceofSigleUnit;
 		System.out.println("ActualPrice : " + ActualPrice);
 		System.out.println("Totalprice : " + Totalprice);
 		Extenttest.createNode("Comparing ActualPrice and Totalprice");
-		softAssert.assertEquals("$ " + ActualPrice, Totalprice);
+		softAssert.assertEquals(Constants.DollerCurrency+" " + ActualPrice, Totalprice);
 		// Assert.assertEquals("$" + ActualPrice, Totalprice);
 
-		//driver.findElement(By.xpath(objectRepository.orderQtysubmitButton)).click();
+		// driver.findElement(By.xpath(objectRepository.orderQtysubmitButton)).click();
 		lib.findElement(driver, objectRepository.orderQtysubmitButton).click();
 		String titleBillingInfo = driver.getTitle();
 		String ExpectedtitleBillingInfo = "Billing Information";
@@ -124,30 +130,9 @@ public class TestNgClass3 extends lib {
 			XSSFSheet objXSSFSheet = objXSSFWorkbook.getSheet("BillingInfoValidation");
 			int RowsCount = objXSSFSheet.getLastRowNum();
 			System.out.println("RowsCount: " + RowsCount);
-			for (int rowNumber = 1; rowNumber < RowsCount; rowNumber++) {
+			for (int rowNumber = 1; rowNumber <= RowsCount; rowNumber++) {
 				readTestData(rowNumber, objXSSFSheet);
 				if (hm.get("RunMode").equals("Yes")) {
-					/*driver.findElement(By.xpath(objectRepository.customerbillName)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillName)).sendKeys(hm.get("Name"));
-					driver.findElement(By.xpath(objectRepository.customerbillAddress)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillAddress)).sendKeys(hm.get("Address"));
-					driver.findElement(By.xpath(objectRepository.customerbillCity)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillCity)).sendKeys(hm.get("City"));
-					driver.findElement(By.xpath(objectRepository.customerbillState)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillState)).sendKeys(hm.get("State"));
-					driver.findElement(By.xpath(objectRepository.customerbillZipCode)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillZipCode)).sendKeys(hm.get("Zip"));
-					driver.findElement(By.xpath(objectRepository.customerbillPhone)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillPhone)).sendKeys(hm.get("Phone"));
-					driver.findElement(By.xpath(objectRepository.customerbillEmail)).clear();
-					driver.findElement(By.xpath(objectRepository.customerbillEmail)).sendKeys(hm.get("Email"));
-					SelectValueFromDropdown(driver, objectRepository.customerCardType, hm.get("CreditCard"));
-					driver.findElement(By.xpath(objectRepository.customerCardNumber)).clear();
-					driver.findElement(By.xpath(objectRepository.customerCardNumber)).sendKeys(hm.get("CardNumber"));
-					driver.findElement(By.xpath(objectRepository.customerCardDate)).clear();
-					driver.findElement(By.xpath(objectRepository.customerCardDate)).sendKeys(hm.get("ExpirationDate"));*/
-					
-					
 					lib.findElement(driver, objectRepository.customerbillName).clear();
 					lib.findElement(driver, objectRepository.customerbillName).sendKeys(hm.get("Name"));
 					lib.findElement(driver, objectRepository.customerbillAddress).clear();
@@ -167,6 +152,10 @@ public class TestNgClass3 extends lib {
 					lib.findElement(driver, objectRepository.customerCardNumber).sendKeys(hm.get("CardNumber"));
 					lib.findElement(driver, objectRepository.customerCardDate).clear();
 					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("ExpirationDate"));
+					FileOutputStream objfileoutput = new FileOutputStream(objFile);
+					uploadTheResultToExcel(objXSSFWorkbook,rowNumber);
+					objXSSFWorkbook.write(objfileoutput);
+					objfileoutput.close();
 				} else {
 					System.out.println("RunMode is not marked as Yes for row number " + rowNumber);
 				}
@@ -175,6 +164,17 @@ public class TestNgClass3 extends lib {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void uploadTheResultToExcel(XSSFWorkbook objXSSFWorkbook, int rowNumber) {
+		XSSFSheet objSheet=objXSSFWorkbook.getSheet("BillingInfoValidation");
+		XSSFCellStyle CellStyle=objXSSFWorkbook.createCellStyle();
+		//CellStyle.setBorderBottom(XSSFCellStyle.BORDER_THIN);
+		System.out.println("Row Number in excel is :"+rowNumber);
+		objSheet.getRow(rowNumber).createCell(12).setCellValue("PASS");	
+		objSheet.getRow(rowNumber).getCell(12).setCellStyle(CellStyle);
+		
+		
 	}
 
 	private void readTestData(int row, XSSFSheet objXSSFSheet) {
@@ -209,7 +209,7 @@ public class TestNgClass3 extends lib {
 	@BeforeMethod
 	public void beforeMethod() {
 		System.out.println("inside beforeMethod");
-
+		//lib.startBrowser(property.getProperty("browser"), property.getProperty("ApplicationGMO_Online"));
 	}
 
 	@AfterMethod
@@ -225,29 +225,34 @@ public class TestNgClass3 extends lib {
 		} else if (result.getStatus() == ITestResult.SKIP) {
 			Extenttest.log(Status.SKIP, "Test Cases Skipped is : " + result.getName());
 		}
-
-	}
 	
+	}
+
 	@BeforeClass
 	public void beforeClass() {
 		System.out.println("inside beforeClass");
-		System.out.println("browser : "+property.getProperty("browser"));
-		System.out.println("Application : "+property.getProperty("ApplicationGMO_Online"));
-		lib.startBrowser(property.getProperty("browser"),property.getProperty("ApplicationGMO_Online") );
-	
+		System.out.println("browser : " + property.getProperty("browser"));
+		System.out.println("Application : " + property.getProperty("ApplicationGMO_Online"));
+		// Starting the browser by passing arguments browser type and
+		// Application Name
+		lib.startBrowser(property.getProperty("browser"), property.getProperty("ApplicationGMO_Online"));
+		// disabling console logs
+		//lib.DisableConsoleLogs();
 	}
 
 	@AfterClass
 	public void afterClass() {
 		System.out.println("inside afterClass");
+		//closing the browser which is having current instance. 
+		driver.close();
 	}
 
 	@BeforeTest
 	public void beforeTest() {
 		System.out.println("inside beforeTest");
-		TestNgClass3 obj = new TestNgClass3();
-		obj.startReport();
+		// starting our extents reports
 		lib.startReport();
+		
 
 	}
 
@@ -260,6 +265,8 @@ public class TestNgClass3 extends lib {
 	@BeforeSuite
 	public void beforeSuite() throws FileNotFoundException, Exception {
 		System.out.println("inside beforeSuite");
+		// Reading the properties file which contain Application URL ,
+		// User Name and Password and Browser
 		lib.readPropertiesFile();
 
 	}

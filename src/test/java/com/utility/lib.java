@@ -5,14 +5,19 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.maven.surefire.shade.org.apache.maven.shared.utils.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -88,4 +93,17 @@ public class lib {
 		FileUtils.copyFile(source, new File(destination));
 		return destination;
 	}
+	
+	public static WebElement findElement(WebDriver driver,String locator){
+		return driver.findElement(By.xpath(locator));
+	}
+	
+	/*public static void DisableConsoleLogs(){
+		Set<String> artifactoryLoggers=new HashSet<>(Arrays.asList("org.apache.http","groovyx.net.http"));
+		for (String log: artifactoryLoggers){
+			ch.qos.logback.classic.logger artlogger=(ch.qos.logbacnk.classic.logger)org.slf4j.LoggerFactory.getLogger(log);
+			artlogger.setLevel(ch.qos.logback.classic.level.INFO);
+			artlogger.setAdditive(false);
+		}
+	}*/
 }
