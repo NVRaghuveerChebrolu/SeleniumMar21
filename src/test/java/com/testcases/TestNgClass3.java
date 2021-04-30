@@ -43,7 +43,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.utility.lib;
 import com.utility.objectRepository;
-import com.utility.Constants;
+import com.utility.constants;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestNgClass3 extends lib {
@@ -72,6 +73,7 @@ public class TestNgClass3 extends lib {
 		System.out.println("inside Testcase2");
 		// driver.findElement(By.xpath(objectRepository.EnterGmoOnline)).click();
 		lib.findElement(driver, objectRepository.EnterGmoOnline).click();
+		lib.waitForPageToLoad(driver);
 		String actualtile = driver.getTitle();
 		System.out.println(actualtile);
 		String expectedtitle = "OnLine Catalog";
@@ -85,9 +87,9 @@ public class TestNgClass3 extends lib {
 		Extenttest = ExtentReport.createTest("validateOrderQuantityGlacierSunGlasses");
 		// driver.findElement(By.xpath(objectRepository.QTY_GLASSES)).sendKeys("3");
 		// driver.findElement(By.xpath(objectRepository.orderQuantitySubmitButton)).click();
-		lib.findElement(driver, objectRepository.QTY_GLASSES).sendKeys(Constants.orderQnty);
+		lib.findElement(driver, objectRepository.QTY_GLASSES).sendKeys(constants.orderQnty);
 		lib.findElement(driver, objectRepository.orderQuantitySubmitButton).click();
-		int quantity = Integer.parseInt(Constants.orderQnty);
+		int quantity = Integer.parseInt(constants.orderQnty);
 		String Acutaltitle = driver.getTitle();
 		String Expectedtitle = "Place Order";
 		Assert.assertEquals(Acutaltitle, Expectedtitle);
@@ -95,7 +97,7 @@ public class TestNgClass3 extends lib {
 		// driver.findElement(By.xpath(objectRepository.orderQuantityUnitPrice)).getText();
 		String Unitprice = lib.findElement(driver, objectRepository.orderQuantityUnitPrice).getText();
 		System.out.println("Unitprice : " + Unitprice);
-		String Price = Unitprice.substring(Integer.parseInt(Constants.orderQnty));
+		String Price = Unitprice.substring(Integer.parseInt(constants.orderQnty));
 		System.out.println(Price);
 		// String Totalprice =
 		// driver.findElement(By.xpath(objectRepository.orderQuantityTotalPrice)).getText();
@@ -105,11 +107,12 @@ public class TestNgClass3 extends lib {
 		System.out.println("ActualPrice : " + ActualPrice);
 		System.out.println("Totalprice : " + Totalprice);
 		Extenttest.createNode("Comparing ActualPrice and Totalprice");
-		softAssert.assertEquals(Constants.DollerCurrency+" " + ActualPrice, Totalprice);
+		softAssert.assertEquals(constants.DollerCurrency+" " + ActualPrice, Totalprice);
 		// Assert.assertEquals("$" + ActualPrice, Totalprice);
 
 		// driver.findElement(By.xpath(objectRepository.orderQtysubmitButton)).click();
 		lib.findElement(driver, objectRepository.orderQtysubmitButton).click();
+		lib.waitForPageToLoad(driver);
 		String titleBillingInfo = driver.getTitle();
 		String ExpectedtitleBillingInfo = "Billing Information";
 		Extenttest.createNode("Comparing titleBillingInfo and ExpectedtitleBillingInfo");
