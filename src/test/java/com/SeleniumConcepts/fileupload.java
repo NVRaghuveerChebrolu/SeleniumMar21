@@ -20,6 +20,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import com.utility.lib;
+
 
 public class fileupload {
 
@@ -38,9 +40,8 @@ public class fileupload {
 		// js.executeScript("arguments[0].scrollIntoView()", ele);
 		Actions obj = new Actions(driver);
 		obj.click(ele).build().perform();
-
-		setClipboardContents("C:\\Users\\raghu\\OneDrive\\Desktop\\sample.jpg");
-
+		System.out.println(System.getProperty("user.dir"));
+		lib.setClipboardContents(System.getProperty("user.dir")+"\\src\\test\\resources\\Sample.jpg");
 		// imitate mouse events like ENTER, CTRL+C, CTRL+V
 		Robot robot = new Robot();
 		robot.delay(250);
@@ -60,18 +61,6 @@ public class fileupload {
 
 	}
 
-	private static void setClipboardContents(String string) {
-		StringSelection stringSelection = new StringSelection(string);
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(stringSelection, null);
-		try {
-			Transferable t = clipboard.getContents(null);
-			if (t.isDataFlavorSupported(DataFlavor.stringFlavor))
-				System.out.println(t.getTransferData(DataFlavor.stringFlavor));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
-	}
 
 }

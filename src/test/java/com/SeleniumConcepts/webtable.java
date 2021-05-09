@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.utility.lib;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class webtable {
@@ -25,9 +27,11 @@ public class webtable {
 		// implicit wait
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// driver.findElement(By.xpath("https://editor.datatables.net/examples/inline-editing/simple")).click();
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,500)");
+		lib.waitForPageToLoad(driver);
+		/*JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,500)");*/
+		
+		lib.javascriptExecutorScroolDown(driver,0,500);
 		String positionpassed = "Pre-Sales Support";
 		// String salaryofpositionpassed = getSalaryBasedonPosition(driver,
 		// positionpassed);

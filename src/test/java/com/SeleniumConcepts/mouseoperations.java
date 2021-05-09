@@ -22,6 +22,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import com.utility.lib;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class mouseoperations {
@@ -62,14 +64,16 @@ public class mouseoperations {
 		 * 
 		 * action.dragAndDrop(source, target).build().perform();
 		 */
-
+		
 		driver.navigate().to("http://api.jquery.com/dblclick/");
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		// js.executeScript("window.scrollBy(0,1250)", "");
 
 		WebElement iframe = driver.findElement(By.xpath("//iframe"));
-		driver.switchTo().frame(iframe);
+		//driver.switchTo().frame(iframe);
+		lib.switchToFrameWithWebElement(iframe);
+		
 
 		/*
 		 * WebElement ele2 = driver.findElement(By.xpath(
@@ -84,13 +88,15 @@ public class mouseoperations {
 			if (flag == true) {
 				WebElement doubleclick = driver
 						.findElement(By.xpath("//span[contains(text(),'Double click the block')]/../div"));
-				js.executeScript("arguments[0].scrollIntoView()", doubleclick);
-				action.doubleClick(doubleclick).build().perform();
+				/*js.executeScript("arguments[0].scrollIntoView()", doubleclick);
+				action.doubleClick(doubleclick).build().perform();*/
+				lib.javascriptExecutorScroolIntoView(doubleclick, action);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		
 		// js.executeScript("window.scrollBy(0,1250)", ""); //scrolling y axis
 		// down by 1250 pixles ->vertical scroll bar
 		// js.executeScript("window.scrollBy(0,-1250)", ""); //scrolling y axis
@@ -104,14 +110,16 @@ public class mouseoperations {
 		Thread.sleep(3000);
 		System.out.println("scroll up");
 		// to scroll vertically up
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight,0)");
+		//((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight,0)");
+		lib.javascriptExecutorScroolUP(driver,"window.scrollTo(document.body.scrollHeight,0)");
 		Thread.sleep(3000);
 		System.out.println("scroll down");
 		// to scroll vertically down
 		// js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
 
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-
+		//((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		lib.javascriptExecutorScroolDown("window.scrollTo(0, document.body.scrollHeight)");
+		
 		File obj = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
 			String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());

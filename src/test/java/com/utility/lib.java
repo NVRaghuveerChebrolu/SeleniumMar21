@@ -1,5 +1,10 @@
 package com.utility;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,9 +27,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -44,6 +51,10 @@ public class lib {
 		System.out.println("Execute before main");
 	}
 
+	/*
+	 * Raghu: Below method is used to start the report and store the
+	 * configuration information inside the report
+	 */
 	public static void startReport() {
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "//test-output//ExtentReport.html");
 		htmlReporter.config().setDocumentTitle("Automation Report-ExtentReport");
@@ -81,7 +92,7 @@ public class lib {
 		}
 		if (Application.equals("GMO_Online")) {
 			driver.get(property.getProperty("GmoOnlineURL"));
-		}else if(Application.equals("php")) {
+		} else if (Application.equals("php")) {
 			driver.get(property.getProperty("phpurl"));
 		}
 
@@ -114,7 +125,7 @@ public class lib {
 	public static WebElement findElement(WebDriver driver, String Identifier) {
 		WebElement element = null;
 		WebDriverWait wait1 = new WebDriverWait(driver, 30);
-		
+
 		By search = null;
 		// System.out.println("Identifier : "+Identifier);
 		String locator = Identifier.split("&")[0].trim();
@@ -139,9 +150,78 @@ public class lib {
 		System.out.println("locator : " + locator);
 		System.out.println("description : " + description);
 		// return element;
-		//element=driver.findElement(search);
+		// element=driver.findElement(search);
 		wait1.until(ExpectedConditions.elementToBeClickable(search));
 		return driver.findElement(search);
+
+	}
+
+	public static void javascriptExecutorScroolDown(String str) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(str);
+	}
+
+	public static void javascriptExecutorScroolDown(WebDriver driver,int i, int j) {
+		//Object x = (Integer) j;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(i) + "," + Integer.toString(j) + ")");
+		 
+	}
+
+	public static void javascriptExecutorScroolUP(WebDriver driver,String str) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(str);
+	}
+
+	public static void javascriptExecutorScroolUP(WebDriver driver,int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(x) + "," + Integer.toString(y) + ")", "");
+	}
+
+	public static void javascriptExecutorScroolLeft(WebDriver driver,int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(x) + "," + Integer.toString(y) + ")", "");
+	}
+
+	public static void javascriptExecutorScroolRight(WebDriver driver,int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(x) + "," + Integer.toString(y) + ")", "");
+	}
+
+	public static void javascriptExecutorScroolIntoView(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()", element);
+	}
+
+	public static void javascriptExecutorScroolIntoView(WebElement element, Actions obj) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()", element);
+		obj.doubleClick(element).build().perform();
+	}
+
+	public static void switchToFrameWithIndex(int index) {
+		driver.switchTo().frame(index);
+	}
+
+	public static void switchToFrameWithString(String name) {
+		driver.switchTo().frame(name);
+	}
+
+	public static void switchToFrameWithWebElement(WebElement element) {
+		driver.switchTo().frame(element);
+	}
+
+	public static void setClipboardContents(String string) {
+		StringSelection stringSelection = new StringSelection(string);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(stringSelection, null);
+		try {
+			Transferable t = clipboard.getContents(null);
+			if (t.isDataFlavorSupported(DataFlavor.stringFlavor))
+				System.out.println(t.getTransferData(DataFlavor.stringFlavor));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
