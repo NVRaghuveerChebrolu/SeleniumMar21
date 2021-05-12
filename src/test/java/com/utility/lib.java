@@ -73,9 +73,20 @@ public class lib {
 		FileInputStream File = new FileInputStream(
 				new File(System.getProperty("user.dir") + "//src//test//resources//config.properties"));
 		property.load(File);
-		property.getProperty("GmoOnlineURL");
-		System.out.println(property.getProperty("GmoOnlineURL"));
-		System.out.println(property.getProperty("browser"));
+		if(property.getProperty("environment").equalsIgnoreCase(constants.SITenvironment)){
+			property.getProperty("GmoOnlineURL_SIT");
+			System.out.println(property.getProperty("GmoOnlineURL_SIT"));
+			System.out.println(property.getProperty("browser"));
+		}else if(property.getProperty("environment").equalsIgnoreCase(constants.UATenvironment)){
+			property.getProperty("GmoOnlineURL_UAT");
+			System.out.println(property.getProperty("GmoOnlineURL_UAT"));
+			System.out.println(property.getProperty("browser"));
+		}else if (property.getProperty("environment").equalsIgnoreCase(constants.PRODenvironment)){
+			property.getProperty("GmoOnlineURL_PROD");	
+			System.out.println(property.getProperty("GmoOnlineURL_PROD"));
+			System.out.println(property.getProperty("browser"));
+		}
+		
 	}
 
 	public static void startBrowser(String browser, String Application) {
@@ -96,7 +107,37 @@ public class lib {
 			driver.get(property.getProperty("phpurl"));
 		}
 
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);// Implicit
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);// Implicit
+																		// //
+																		// wait
+		driver.manage().window().maximize();
+	}
+	
+	//overloaded above method
+	public static void startBrowser(String browser, String Application,String env) {
+		System.out.println("inside beforeClass");
+		if (browser.equals("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+		} else if (browser.equals("IE")) {
+			WebDriverManager.iedriver().setup();
+			driver = new InternetExplorerDriver();
+		} else if (browser.equals("firefox")) {
+			WebDriverManager.firefoxdriver();
+			driver = new FirefoxDriver();
+		}
+		if ((Application.equals("GMO_Online"))&&(env.equals(constants.SITenvironment))) {
+			driver.get(property.getProperty("GmoOnlineURL_SIT"));
+		} else if((Application.equals("GMO_Online"))&&(env.equals(constants.UATenvironment))) {
+			driver.get(property.getProperty("GmoOnlineURL_UAT"));
+		}else if((Application.equals("GMO_Online"))&&(env.equals(constants.PRODenvironment))) {
+			driver.get(property.getProperty("GmoOnlineURL_PROD"));
+		}
+		else if (Application.equals("php")) {
+			driver.get(property.getProperty("phpurl"));
+		}
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);// Implicit
 																		// //
 																		// wait
 		driver.manage().window().maximize();
@@ -124,7 +165,7 @@ public class lib {
 
 	public static WebElement findElement(WebDriver driver, String Identifier) {
 		WebElement element = null;
-		WebDriverWait wait1 = new WebDriverWait(driver, 30);
+		WebDriverWait wait1 = new WebDriverWait(driver, 90);
 
 		By search = null;
 		// System.out.println("Identifier : "+Identifier);

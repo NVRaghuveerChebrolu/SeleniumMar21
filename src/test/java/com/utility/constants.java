@@ -1,6 +1,9 @@
 package com.utility;
 
 public class constants {
+	public static final String SITenvironment ="SIT";
+	public static final String UATenvironment ="UAT";
+	public static final String PRODenvironment ="PROD";
 	public static final String orderQnty ="3";
 	public static final String SubStringIndex ="2";
 	public static final String DollerCurrency ="$";
