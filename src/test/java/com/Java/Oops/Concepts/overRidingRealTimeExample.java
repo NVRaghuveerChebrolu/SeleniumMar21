@@ -10,7 +10,7 @@ class Bank {
 }
 
 // Creating child classes.
-class SBI extends Bank {
+class SBI23451 extends Bank {
 	int getRateOfInterest() {
 		return 8;
 	}
@@ -31,7 +31,7 @@ class AXIS extends Bank {
 // Test class to create objects and call the methods
 public class overRidingRealTimeExample {
 	public static void main(String args[]) {
-		SBI s = new SBI();
+		SBI23451 s = new SBI23451();
 		ICICI i = new ICICI();
 		AXIS a = new AXIS();
 		System.out.println("SBI Rate of Interest: " + s.getRateOfInterest());

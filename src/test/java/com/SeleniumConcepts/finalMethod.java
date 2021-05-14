@@ -6,7 +6,7 @@ class Bike {
 	}
 }
 
-public class finalMethod extends Bike {
+/*public class finalMethod extends Bike {
 	void run() {
 		System.out.println("running safely with 100kmph");
 	}
@@ -15,4 +15,4 @@ public class finalMethod extends Bike {
 		finalMethod honda = new finalMethod();
 		honda.run();
 	}
-}
+}*/

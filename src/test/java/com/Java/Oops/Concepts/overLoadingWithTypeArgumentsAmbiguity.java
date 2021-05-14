@@ -11,7 +11,7 @@ class overLoadingWithTypeArgumentsAmbiguity {
 
 	public static void main(String args[]) {
 		overLoadingWithTypeArgumentsAmbiguity obj = new overLoadingWithTypeArgumentsAmbiguity();
-		obj.sum(20, 20);// now ambiguity because int type is promoted to long which is used in both sum methods
+		//obj.sum(20, 20);// now ambiguity because int type is promoted to long which is used in both sum methods
 	}
 }
 

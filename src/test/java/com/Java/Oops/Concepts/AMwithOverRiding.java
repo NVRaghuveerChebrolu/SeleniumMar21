@@ -1,6 +1,6 @@
 package com.Java.Oops.Concepts;
 
-class A4545 {
+/*class A4545 {
 	protected void msg() {
 		System.out.println("Hello java");
 	}
@@ -15,4 +15,4 @@ public class AMwithOverRiding extends A4545 {
 		AMwithOverRiding obj = new AMwithOverRiding();
 		obj.msg();
 	}
-}
+}*/

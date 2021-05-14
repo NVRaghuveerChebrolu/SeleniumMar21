@@ -1,6 +1,6 @@
 package com.SeleniumConcepts;
 
-public class finalVariable {
+/*public class finalVariable {
 	final int speedlimit = 90;// final variable
 
 	void run() {
@@ -12,6 +12,6 @@ public class finalVariable {
 		finalVariable obj = new finalVariable();
 		obj.run();
 	}
-	/*Note : compile time error is observed when trying to change the variable which is 
-	declared as final*/
-}
+	Note : compile time error is observed when trying to change the variable which is 
+	declared as final
+}*/

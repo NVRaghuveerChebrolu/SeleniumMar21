@@ -4,7 +4,7 @@ final class Honda1 {
 //note cannot extend this as it is marked as final
 }
 
-class finalClass extends Honda1 {
+/*class finalClass extends Honda1 {
 	void run() {
 		System.out.println("running safely with 100kmph");
 	}
@@ -14,3 +14,4 @@ class finalClass extends Honda1 {
 		honda.run();
 	}
 }
+*/

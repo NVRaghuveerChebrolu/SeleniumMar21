@@ -1,7 +1,7 @@
 package com.Java.Oops.Concepts;
 
 class Adder1234 {
-	static int add(int a, int b) {
+/*	static int add(int a, int b) {
 		return a + b;
 	}
 
@@ -17,5 +17,5 @@ class overLoadingbyDifferentDataTypesWithSameArgumentTypes {
 		System.out.println(Adder1234.add(12.3, 12.6));
 		System.out.println(Adder1234.add(12, 12));
 
-	}
+	}*/
 }
