@@ -1,6 +1,6 @@
 package com.Java.Programs;
 
-public static void main(String[] args) {
+//public static void main(String[] args) {
 
 public class gettersAndSetters {
 	private int roll;
@@ -30,4 +30,4 @@ public class gettersAndSetters {
 	}
 }
 	
-}
+//}
