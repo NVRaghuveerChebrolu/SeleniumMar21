@@ -49,6 +49,7 @@ public class webtable {
 				System.out.println(salary);
 			}
 		}
+		driver.close();
 	}
 
 	private static void getSalaryBasedonPosition(WebDriver driver, String positionreceived) {
